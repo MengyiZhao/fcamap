@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+old schema: http://www.seals-project.eu/schemas/2010-08-15/ToolPackageDescriptor.xsd
+new schema: http://www.seals-project.eu/resources/res/tools/bundle/v1
+-->
+
+<ns:package 	  
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:ns="http://www.seals-project.eu/resources/res/tools/bundle/v1"
+	id="FCA_MAP" 
+	version="1.0">
+	<ns:description>FCA_Map is a matching tool based on formal concept analysis.</ns:description>
+	<ns:endorsement>
+		<ns:copyright>Academy of Mathematics and Systems Science Chinese Academy of Sciences</ns:copyright>
+		<ns:license>Specification of license</ns:license>
+	</ns:endorsement>
+	<ns:wrapper>
+		<ns:management>
+			<ns:deploy>
+				<ns:executable xsi:type="ns:ShellScript">
+					<ns:script>deploy.bat</ns:script>
+					<ns:error-log>deploy-error.log</ns:error-log>
+				</ns:executable>
+			</ns:deploy>
+			<ns:start>
+				<ns:executable xsi:type="ns:ShellScript">
+					<ns:script>start.bat</ns:script>
+					<ns:error-log>start-error.log</ns:error-log>
+				</ns:executable>
+			</ns:start>
+			<ns:stop>
+				<ns:executable xsi:type="ns:ShellScript">
+					<ns:script>stop.bat</ns:script>
+					<ns:error-log>stop-error.log</ns:error-log>
+				</ns:executable>
+			</ns:stop>
+			<ns:undeploy>
+				<ns:executable xsi:type="ns:ShellScript">
+					<ns:script>undeploy.bat</ns:script>
+					<ns:error-log>undeploy-error.log</ns:error-log>
+				</ns:executable>
+			</ns:undeploy>
+		</ns:management>
+		<ns:bridge>
+			<!-- references relative to bin folder -->
+			<ns:class>Method.MatcherBridge</ns:class>
+			<ns:jar>FCA_Map-bridge.jar</ns:jar>
+			<ns:dependencies>
+				<ns:lib>lib/FCA_Lib.jar</ns:lib>
+				<ns:lib>lib/FCA_Map.jar</ns:lib>
+				<ns:lib>lib/HermiT_1.3.6.jar</ns:lib>
+				<ns:lib>lib/lvg2016api.jar</ns:lib>
+				<ns:lib>lib/lvg2016dist.jar</ns:lib>
+			</ns:dependencies>
+		</ns:bridge>
+	</ns:wrapper>
+</ns:package>
+
